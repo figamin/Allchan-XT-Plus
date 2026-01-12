@@ -16,8 +16,8 @@
       "matches": [
         "https://*.4chan.org/*",
         "https://*.4cdn.org/*",
-        "https://wapchan.org",
-        "https://39chan.moe",
+        "https://wapchan.org/*",
+        "https://39chan.moe/*",
         "https://erischan.org/*",
         "https://www.erischan.org/*",
         "https://fufufu.moe/*",

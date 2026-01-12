@@ -12,8 +12,8 @@
 // @include      https://i.4cdn.org/*
 // @include      https://is.4chan.org/*
 // @include      https://is2.4chan.org/*
-// @include      https://wapchan.org
-// @include      https://39chan.moe
+// @include      https://wapchan.org/*
+// @include      https://39chan.moe/*
 // @include      https://erischan.org/*
 // @include      https://www.erischan.org/*
 // @include      https://fufufu.moe/*
