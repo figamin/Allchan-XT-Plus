@@ -1,24 +1,24 @@
 // ==UserScript==
-// @name         4chan XT
-// @version      2.24.2
+// @name         Altchan XT
+// @version      2.24.3
 // @minGMVer     1.14
 // @minFFVer     78
-// @namespace    4chan-XT
-// @description  4chan XT is a script that adds various features to anonymous imageboards.
-// @license      MIT; https://github.com/TuxedoTako/4chan-xt/blob/project-XT/LICENSE
+// @namespace    Altchan-XT
+// @description  4chan XT is a script that adds various features to anonymous imageboards, focused on improving compatibility with vichan and other engines.
+// @license      MIT; https://github.com/figamin/Altchan-xt/blob/project-XT/LICENSE
 // @include      https://boards.4chan.org/*
 // @include      https://sys.4chan.org/*
 // @include      https://www.4chan.org/*
 // @include      https://i.4cdn.org/*
 // @include      https://is.4chan.org/*
 // @include      https://is2.4chan.org/*
+// @include      https://wapchan.org
+// @include      https://39chan.moe
 // @include      https://erischan.org/*
 // @include      https://www.erischan.org/*
 // @include      https://fufufu.moe/*
 // @include      https://kakashinenpo.com/*
 // @include      https://www.kakashinenpo.com/*
-// @include      https://kissu.moe/*
-// @include      https://www.kissu.moe/*
 // @include      https://original.kissu.moe/*
 // @include      https://lainchan.org/*
 // @include      https://www.lainchan.org/*
@@ -78,7 +78,7 @@
 // @grant        GM.xmlHttpRequest
 // @run-at       document-start
 // @updateURL    none
-// @downloadURL  https://github.com/TuxedoTako/4chan-xt/releases/latest/download/4chan-XT.min.user.js
+// @downloadURL  https://github.com/figamin/Altchan-xt/releases/latest/download/Altchan-XT.user.js
 // @icon         data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAACVBMVEUAAGcAAABmzDNZt9VtAAAAAXRSTlMAQObYZgAAAF5JREFUeNrtkTESABAQxPD/R6tsE2dUGYUtFJvLDKf93KevHJAjpBorAQWSBIKqFASC4G0pCAkm4GfaEvgYXl0T6HBaE97f0vmnfYHbZOMLZCx9ISdKWwjOWZSC8GYm4SUGwfYgqI4AAAAASUVORK5CYII=
 // @license      MIT
 // ==/UserScript==

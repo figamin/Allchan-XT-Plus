@@ -1,24 +1,24 @@
 // ==UserScript==
-// @name         4chan XT
-// @version      2.24.2
+// @name         Altchan XT
+// @version      2.24.3
 // @minGMVer     1.14
 // @minFFVer     78
-// @namespace    4chan-XT
-// @description  4chan XT is a script that adds various features to anonymous imageboards.
-// @license      MIT; https://github.com/TuxedoTako/4chan-xt/blob/project-XT/LICENSE
+// @namespace    Altchan-XT
+// @description  4chan XT is a script that adds various features to anonymous imageboards, focused on improving compatibility with vichan and other engines.
+// @license      MIT; https://github.com/figamin/Altchan-xt/blob/project-XT/LICENSE
 // @include      https://boards.4chan.org/*
 // @include      https://sys.4chan.org/*
 // @include      https://www.4chan.org/*
 // @include      https://i.4cdn.org/*
 // @include      https://is.4chan.org/*
 // @include      https://is2.4chan.org/*
+// @include      https://wapchan.org
+// @include      https://39chan.moe
 // @include      https://erischan.org/*
 // @include      https://www.erischan.org/*
 // @include      https://fufufu.moe/*
 // @include      https://kakashinenpo.com/*
 // @include      https://www.kakashinenpo.com/*
-// @include      https://kissu.moe/*
-// @include      https://www.kissu.moe/*
 // @include      https://original.kissu.moe/*
 // @include      https://lainchan.org/*
 // @include      https://www.lainchan.org/*
@@ -169,25 +169,25 @@
   'use strict';
 
   var version = {
-    "version": "2.24.2",
-    "date": "2025-12-23T20:20:20Z"
+    "version": "2.24.3",
+    "date": "2025-1-11T00:00:00Z"
   };
 
   var meta = {
-   "name": "4chan XT",
-   "path": "4chan-XT",
-   "fork": "TuxedoTako",
-   "page": "https://github.com/TuxedoTako/4chan-xt",
-   "downloads": "https://github.com/TuxedoTako/4chan-xt/releases",
+   "name": "Altchan XT",
+   "path": "Altchan-XT",
+   "fork": "figamin",
+   "page": "https://github.com/figamin/Altchan-xt",
+   "downloads": "https://github.com/figamin/Altchan-xt/releases",
    "oldVersions": "https://raw.githubusercontent.com/ccd0/4chan-x/",
-   "faq": "https://github.com/TuxedoTako/4chan-xt/wiki/Frequently-Asked-Questions",
+   "faq": "https://github.com/figamin/Altchan-xt/wiki/Frequently-Asked-Questions",
    "upstreamFaq": "https://github.com/ccd0/4chan-x/wiki/Frequently-Asked-Questions",
    "captchaFAQ": "https://github.com/ccd0/4chan-x/wiki/Captcha-FAQ",
    "cssGuide": "https://github.com/ccd0/4chan-x/wiki/Styling-Guide",
-   "license": "https://github.com/TuxedoTako/4chan-xt/blob/project-XT/LICENSE",
-   "changelog": "https://github.com/TuxedoTako/4chan-xt/blob/project-XT/CHANGELOG.md",
-   "issues": "https://github.com/TuxedoTako/4chan-xt/issues",
-   "newIssue": "https://github.com/TuxedoTako/4chan-xt/issues",
+   "license": "https://github.com/figamin/Altchan-xt/blob/project-XT/LICENSE",
+   "changelog": "https://github.com/figamin/Altchan-xt/blob/project-XT/CHANGELOG.md",
+   "issues": "https://github.com/figamin/Altchan-xt/issues",
+   "newIssue": "https://github.com/figamin/Altchan-xt/issues",
    "newIssueMaxLength": 8181,
    "alternatives": "https://www.4chan-x.net/4chan_alternatives.html",
    "appid": "lacclbnghgdicfifcamcmcnilckjamag",

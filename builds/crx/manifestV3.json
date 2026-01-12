@@ -1,8 +1,8 @@
 {
-  "name": "4chan XT",
+  "name": "Altchan XT",
   "version": "2.24.2",
   "manifest_version": 3,
-  "description": "4chan XT is a script that adds various features to anonymous imageboards.",
+  "description": "4chan XT is a script that adds various features to anonymous imageboards, focused on improving compatibility with vichan and other engines.",
   "icons": {
     "16": "icon16.png",
     "48": "icon48.png",
@@ -16,13 +16,13 @@
       "matches": [
         "https://*.4chan.org/*",
         "https://*.4cdn.org/*",
+        "https://wapchan.org",
+        "https://39chan.moe",
         "https://erischan.org/*",
         "https://www.erischan.org/*",
         "https://fufufu.moe/*",
         "https://kakashinenpo.com/*",
         "https://www.kakashinenpo.com/*",
-        "https://kissu.moe/*",
-        "https://www.kissu.moe/*",
         "https://original.kissu.moe/*",
         "https://lainchan.org/*",
         "https://www.lainchan.org/*",
@@ -55,7 +55,7 @@
   "background": {
     "service_worker": "eventPage.js"
   },
-  "homepage_url": "https://github.com/TuxedoTako/4chan-xt",
+  "homepage_url": "https://github.com/figamin/Altchan-xt",
   "minimum_chrome_version": "90",
   "applications": {
     "gecko": {
@@ -70,13 +70,13 @@
   "host_permissions": [
     "https://*.4chan.org/*",
     "https://*.4cdn.org/*",
+    "https://wapchan.org",
+    "https://39chan.moe",
     "https://erischan.org/*",
     "https://www.erischan.org/*",
     "https://fufufu.moe/*",
     "https://kakashinenpo.com/*",
     "https://www.kakashinenpo.com/*",
-    "https://kissu.moe/*",
-    "https://www.kissu.moe/*",
     "https://original.kissu.moe/*",
     "https://lainchan.org/*",
     "https://www.lainchan.org/*",

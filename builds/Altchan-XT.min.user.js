@@ -1,24 +1,24 @@
 // ==UserScript==
-// @name         4chan XT
-// @version      2.24.2
+// @name         Altchan XT
+// @version      2.24.3
 // @minGMVer     1.14
 // @minFFVer     78
-// @namespace    4chan-XT
-// @description  4chan XT is a script that adds various features to anonymous imageboards.
-// @license      MIT; https://github.com/TuxedoTako/4chan-xt/blob/project-XT/LICENSE
+// @namespace    Altchan-XT
+// @description  4chan XT is a script that adds various features to anonymous imageboards, focused on improving compatibility with vichan and other engines.
+// @license      MIT; https://github.com/figamin/Altchan-xt/blob/project-XT/LICENSE
 // @include      https://boards.4chan.org/*
 // @include      https://sys.4chan.org/*
 // @include      https://www.4chan.org/*
 // @include      https://i.4cdn.org/*
 // @include      https://is.4chan.org/*
 // @include      https://is2.4chan.org/*
+// @include      https://wapchan.org
+// @include      https://39chan.moe
 // @include      https://erischan.org/*
 // @include      https://www.erischan.org/*
 // @include      https://fufufu.moe/*
 // @include      https://kakashinenpo.com/*
 // @include      https://www.kakashinenpo.com/*
-// @include      https://kissu.moe/*
-// @include      https://www.kissu.moe/*
 // @include      https://original.kissu.moe/*
 // @include      https://lainchan.org/*
 // @include      https://www.lainchan.org/*
@@ -163,7 +163,7 @@
 *
 * Icons used to identify various websites are property of the respective websites.
 */
-!function(){"use strict";var e="2.24.2",t="2025-12-23T20:20:20Z",o={name:"4chan XT",path:"4chan-XT",fork:"TuxedoTako",page:"https://github.com/TuxedoTako/4chan-xt",downloads:"https://github.com/TuxedoTako/4chan-xt/releases",oldVersions:"https://raw.githubusercontent.com/ccd0/4chan-x/",faq:"https://github.com/TuxedoTako/4chan-xt/wiki/Frequently-Asked-Questions",upstreamFaq:"https://github.com/ccd0/4chan-x/wiki/Frequently-Asked-Questions",captchaFAQ:"https://github.com/ccd0/4chan-x/wiki/Captcha-FAQ",cssGuide:"https://github.com/ccd0/4chan-x/wiki/Styling-Guide",license:"https://github.com/TuxedoTako/4chan-xt/blob/project-XT/LICENSE",changelog:"https://github.com/TuxedoTako/4chan-xt/blob/project-XT/CHANGELOG.md",issues:"https://github.com/TuxedoTako/4chan-xt/issues",newIssue:"https://github.com/TuxedoTako/4chan-xt/issues",newIssueMaxLength:8181,alternatives:"https://www.4chan-x.net/4chan_alternatives.html",appid:"lacclbnghgdicfifcamcmcnilckjamag",appidGecko:"4chan-x@4chan-x.net",
+!function(){"use strict";var e="2.24.3",t="2025-1-11T00:00:00Z",o={name:"Altchan XT",path:"Altchan-XT",fork:"figamin",page:"https://github.com/figamin/Altchan-xt",downloads:"https://github.com/figamin/Altchan-xt/releases",oldVersions:"https://raw.githubusercontent.com/ccd0/4chan-x/",faq:"https://github.com/figamin/Altchan-xt/wiki/Frequently-Asked-Questions",upstreamFaq:"https://github.com/ccd0/4chan-x/wiki/Frequently-Asked-Questions",captchaFAQ:"https://github.com/ccd0/4chan-x/wiki/Captcha-FAQ",cssGuide:"https://github.com/ccd0/4chan-x/wiki/Styling-Guide",license:"https://github.com/figamin/Altchan-xt/blob/project-XT/LICENSE",changelog:"https://github.com/figamin/Altchan-xt/blob/project-XT/CHANGELOG.md",issues:"https://github.com/figamin/Altchan-xt/issues",newIssue:"https://github.com/figamin/Altchan-xt/issues",newIssueMaxLength:8181,alternatives:"https://www.4chan-x.net/4chan_alternatives.html",appid:"lacclbnghgdicfifcamcmcnilckjamag",appidGecko:"4chan-x@4chan-x.net",
 recaptchaKey:"6Ldp2bsSAAAAAAJ5uyx_lx34lJeEpTLVkP5k04qc",min:{chrome:"90",firefox:"78",greasemonkey:"1.14"}};const a=Object.create(null),i={VERSION:e,VERSION_DATE:new Date(t),NAMESPACE:o.name,sites:Object.create(null),boards:Object.create(null)},s=function(){const e={"&":"&amp;","'":"&#039;",'"':"&quot;","<":"&lt;",">":"&gt;"},t=/[&"'<>]/g,o=function(t){return e[t]},a=function(e){return e.toString().replace(t,o)};return a.cat=function(e){let t="";for(let o=0;o<e.length;o++)t+=e[o].innerHTML;return t},a}(),n=document,r=n.documentElement,l=console,d=function(){return r};class c{static initClass(){this.Post=new c("Post"),this.Thread=new c("Thread"),this.CatalogThread=new c("Catalog Thread"),this.CatalogThreadNative=new c("Catalog Thread")}constructor(e){this.type=e,this.keys=[]}push({name:e,cb:t}){return this[e]||this.keys.push(e),this[e]=t}execute(e,t=this.keys,o=!1){let a;if(!e.callbacksExecuted||o){for(var i of(e.callbacksExecuted=!0,t))try{this[i]?.call(e)}catch(t){a||(a=[]),a.push({
 message:['"',i,'" crashed on node ',this.type," No.",e.ID," (",e.board,")."].join(""),error:t,html:e.nodes?.root?.outerHTML})}return a?Ft.handleErrors(a):void 0}}}c.initClass();const h={main:{Miscellaneous:{"JSON Index":[!0,"Replace the original board index with one supporting searching, sorting, infinite scrolling, and a catalog mode."],[`Use ${o.name} Catalog`]:[!0,`Link to ${o.name}'s catalog instead of the native 4chan one.`,1],"Index Refresh Notifications":[!1,"Show a notice at the top of the page when the index is refreshed.",1],"Follow Cursor":[!0,"Image Hover and Quote Preview move with the mouse cursor."],"Open Threads in New Tab":[!1,`Make links to threads in the index / ${o.name} catalog open in a new tab.`],"External Catalog":[!1,"Link to external catalog instead of the internal one."],"Catalog Links":[!1,"Add toggle link in header menu to turn Navigation links into links to each board's catalog."],"Announcement Hiding":[!0,"Add button to hide 4chan announcements."],
 "Desktop Notifications":[!0,`Enables desktop notifications across various ${o.name} features.`],"404 Redirect":[!0,"Redirect dead threads and images to the archives."],"Archive Report":[!0,"Enable reporting posts to supported archives."],"Exempt Archives from Encryption":[!1,"Permit loading content from, and warningless redirects to, HTTP-only archives from HTTPS pages."],Keybinds:[!0,"Bind actions to keyboard shortcuts."],"Time Formatting":[!0,'Localize and format timestamps. Has more options on the "Advanced" tab.'],"Comment Expansion":[!0,"Expand comments that are too long to display on the index. Not applicable with JSON Index."],"File Info Formatting":[!0,"Reformat the file information."],"Thread Expansion":[!0,"Add buttons to expand threads."],"Index Navigation":[!1,"Add buttons to navigate between threads."],"Reply Navigation":[!1,"Add buttons to navigate to top / bottom of thread."],
@@ -649,4 +649,4 @@ innerHTML:`${e.length} errors occurred.${Ft.reportLink(e).innerHTML} [<a href="j
 mounted:e=>Ft.isMounted?e():Ft.mountedCBs.push(e),mountedCBs:[],
 features:[["Board Configuration",se],["Normalize URL",xt],["Delay Redirect on Post",he],["Captcha Configuration",$],["Image Host Rewriting",T],["Redirect",et],["Header",Xe],["Catalog Links",Ke],["Settings",_e],["Index Generator",Ce],["Disable Autoplay",ut],["Announcement Hiding",kt],["Fourchan thingies",ft],["Tinyboard Glue",Dt],["Color User IDs",mt],["Highlight by User ID",bt],["Count Posts by ID",vt],["Custom CSS",L],["Thread Links",Ct],["Linkify",Re],["Reveal Spoilers",It],["Resurrect Quotes",Pt],["Filter",Ge],["Thread Hiding Buttons",De],["Reply Hiding Buttons",le],["Recursive",re],["Strike-through Quotes",Mt],["Quick Reply Personas",$e.persona],["Quick Reply",$e],["Cooldown",$e.cooldown],["Post Jumper",wt],["Pass Link",Tt],["Menu",ne],["Index Generator (Menu)",Ce.menu],["Report Link",ht],["Copy Text Link",lt],["Thread Hiding (Menu)",De.menu],["Reply Hiding (Menu)",le.menu],["Delete Link",dt],["Filter (Menu)",Ge.menu],["Edit Link",$e.oekaki.menu],["Download Link",ct],["Archive Link",rt],["Quote Inlining",Rt],["Quote Previewing",Ie],["Quote Backlinks",Bt],["Mark Quotes of You",ge],["Mark OP Quotes",Nt],["Mark Cross-thread Quotes",Lt],["Anonymize",ot],["Time Formatting",Be],["Relative Post Dates",de],["File Info Formatting",Je],["Fappe Tyme",Ee],["Gallery",Te],["Gallery (menu)",Te.menu],["Sauce",Se],["Image Expansion",oe],["Image Expansion (Menu)",oe.menu],["Reveal Spoiler Thumbnails",nt],["Image Loading",it],["Image Hover",at],["Volume Control",ee],["WEBM Metadata",st],["Comment Expansion",ue],["Thread Expansion",be],["Favicon",F],["Unread",me],["Unread Line in Index",ve],["Quote Threading",we],["Thread Stats",St],["Thread Updater",Me],["Thread Watcher",Ae],["Thread Watcher (Menu)",Ae.menu],["Mark New IPs",Et],["Index Navigation",Z],["Keybinds",Pe],["Banner",pt],["Announcements",yt],["Flash Features",gt],["Reply Pruning",xe],["Mod Contact Links",At],["Restore deleted posts from archive",ye],["Mark posts on scroll bar",pe]]
 };x.ready((()=>Ft.init()))}();
-//# sourceMappingURL=4chan-XT.min.user.js.map
+//# sourceMappingURL=Altchan-XT.min.user.js.map
