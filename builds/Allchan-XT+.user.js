@@ -5,7 +5,7 @@
 // @minFFVer     78
 // @namespace    Allchan-XT+
 // @description  Allchan-XT+ is a script that adds various features to anonymous imageboards, focused on improving the posting experience.
-// @license      MIT; https://github.com/figamin/Allchan-XT+/blob/project-XT/LICENSE
+// @license      MIT; https://github.com/figamin/Allchan-XT-Plus/blob/project-XT/LICENSE
 // @include      https://boards.4chan.org/*
 // @include      https://sys.4chan.org/*
 // @include      https://www.4chan.org/*
@@ -177,17 +177,17 @@
    "name": "Allchan-XT+",
    "path": "Allchan-XT+",
    "fork": "figamin",
-   "page": "https://github.com/figamin/Allchan-XT+",
-   "downloads": "https://github.com/figamin/Allchan-XT+/releases",
+   "page": "https://github.com/figamin/Allchan-XT-Plus",
+   "downloads": "https://github.com/figamin/Allchan-XT-Plus/releases",
    "oldVersions": "https://raw.githubusercontent.com/ccd0/4chan-x/",
-   "faq": "https://github.com/figamin/Allchan-XT+/wiki/Frequently-Asked-Questions",
+   "faq": "https://github.com/figamin/Allchan-XT-Plus/wiki/Frequently-Asked-Questions",
    "upstreamFaq": "https://github.com/ccd0/4chan-x/wiki/Frequently-Asked-Questions",
    "captchaFAQ": "https://github.com/ccd0/4chan-x/wiki/Captcha-FAQ",
    "cssGuide": "https://github.com/ccd0/4chan-x/wiki/Styling-Guide",
-   "license": "https://github.com/figamin/Allchan-XT+/blob/project-XT/LICENSE",
-   "changelog": "https://github.com/figamin/Allchan-XT+/blob/project-XT/CHANGELOG.md",
-   "issues": "https://github.com/figamin/Allchan-XT+/issues",
-   "newIssue": "https://github.com/figamin/Allchan-XT+/issues",
+   "license": "https://github.com/figamin/Allchan-XT-Plus/blob/project-XT/LICENSE",
+   "changelog": "https://github.com/figamin/Allchan-XT-Plus/blob/project-XT/CHANGELOG.md",
+   "issues": "https://github.com/figamin/Allchan-XT-Plus/issues",
+   "newIssue": "https://github.com/figamin/Allchan-XT-Plus/issues",
    "newIssueMaxLength": 8181,
    "alternatives": "https://www.4chan-x.net/4chan_alternatives.html",
    "appid": "lacclbnghgdicfifcamcmcnilckjamag",

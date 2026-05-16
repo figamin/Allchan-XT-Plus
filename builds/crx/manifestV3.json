@@ -55,7 +55,7 @@
   "background": {
     "service_worker": "eventPage.js"
   },
-  "homepage_url": "https://github.com/figamin/Allchan-XT+",
+  "homepage_url": "https://github.com/figamin/Allchan-XT-Plus",
   "minimum_chrome_version": "90",
   "applications": {
     "gecko": {
