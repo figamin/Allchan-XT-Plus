@@ -88,6 +88,7 @@ var QR = {
     flag?: HTMLSelectElement,
     preview?: HTMLDivElement;
     splitPost?: HTMLAnchorElement;
+    randomizeMD5: HTMLAnchorElement;
   },
   shortcut: undefined as HTMLAnchorElement,
   hasFocus: false,
@@ -783,6 +784,7 @@ var QR = {
     setNode('drawButton',     '#qr-draw-button');
     setNode('randomizeButton','#qr-randomize');
     setNode('compress',       '#qr-jpg');
+    setNode('randomizeMD5',   '#qr-randomize-md5');
     setNode('view',           '#qr-view');
     setNode('restoreNameButton','#qr-restore-name');
     setNode('fileSubmit',     '#file-n-submit');
@@ -832,6 +834,17 @@ var QR = {
     $.on(nodes.fileButton,     'click',     QR.openFileInput);
     $.on(nodes.noFile,         'click',     QR.openFileInput);
     $.on(nodes.randomizeButton,'click',     () => { QR.selected.randomizeName(); });
+    $.on(nodes.randomizeMD5, 'click', async () => {
+      const file = QR.selected?.file;
+      if (!file) {
+        QR.error('No file selected to randomize.');
+        return;
+      }
+      const modifiedFile = await QR.randomizeMD5(file);
+      if (modifiedFile) {
+        QR.handleFiles([modifiedFile]);
+      }
+    });
     $.on(nodes.compress,       'click',     async () => { QR.handleFiles([await QR.convert(QR.selected.file)]); });
     $.on(nodes.view,           'click',     QR.preview);
     $.on(nodes.restoreNameButton,'click',   () => { QR.selected.restoreName(); });
@@ -899,6 +912,7 @@ var QR = {
     Icon.set(nodes.randomizeButton, 'shuffle');
     Icon.set(nodes.compress, 'shrink');
     Icon.set(nodes.view, 'eye');
+    Icon.set(nodes.randomizeMD5, 'dice');
     Icon.set(nodes.restoreNameButton, 'undo');
     Icon.set(nodes.splitPost, 'scissors');
     Icon.set(nodes.fileRM, 'xmark');
@@ -1319,7 +1333,76 @@ var QR = {
 
     return newFile;
   },
+  async randomizeMD5() {
+  if (!QR.selected) {
+    QR.error('No post selected.');
+    return;
+  }
 
+  const file = QR.selected.file;
+  if (!file) {
+    QR.error('No file selected.');
+    return;
+  }
+
+  // Only static images (no GIF)
+  if (!file.type.startsWith('image/') || file.type === 'image/gif') {
+    new Notice('warning', 'MD5 change supports only static image files.');
+    return;
+  }
+
+  try {
+    const newFile = await new Promise<File>((resolve, reject) => {
+      const img = new Image();
+
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        canvas.width = img.width;
+        canvas.height = img.height;
+
+        const ctx = canvas.getContext('2d');
+        if (!ctx) {
+          reject(new Error('Image MD5 canvas failed'));
+          return;
+        }
+
+        ctx.drawImage(img, 0, 0);
+
+        // Flip one bit of each of the red, green, and blue channels
+        const pixel = ctx.getImageData(0, 0, 1, 1);
+        pixel.data[0] ^= 1; // red
+        pixel.data[1] ^= 1; // green
+        pixel.data[2] ^= 1; // blue
+        ctx.putImageData(pixel, 0, 0);
+
+        canvas.toBlob(
+          blob => {
+            if (!blob) {
+              reject(new Error('Canvas toBlob failed'));
+              return;
+            }
+            URL.revokeObjectURL(img.src);
+            resolve(new File([blob], file.name, { type: file.type }));
+          },
+          file.type,
+          0.98
+        );
+      };
+
+      img.onerror = () => {
+        URL.revokeObjectURL(img.src);
+        reject(new Error('Failed to load image'));
+      };
+
+      img.src = URL.createObjectURL(file);
+    });
+
+    // Replace the selected file with the modified one
+    QR.handleFiles([newFile]);
+  } catch (err) {
+    QR.error('Failed to randomize MD5: ' + (err instanceof Error ? err.message : err));
+  }
+},
   previewUrl: undefined as string | undefined,
 
   preview() {
@@ -2092,7 +2175,7 @@ class post {
    * @returns A promise with the old file if it was valid, or a new file if it wasn't.
    */
   async validateFile(file: File): Promise<File> {
-    // Do not check on altchans, those might support types 4chan doesn't
+    // Do not check on Allchans, those might support types 4chan doesn't
     if (location.hostname.endsWith('4chan.org') && !QR.mimeTypes.includes(file.type)) {
       if (file.type.startsWith('image/')) {
         const msg = `The ${file.type.slice(6)} image was converted to png.`;

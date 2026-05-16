@@ -85,25 +85,25 @@
   'use strict';
 
   var version = {
-    "version": "2.24.2",
-    "date": "2025-12-23T20:20:20Z"
+    "version": "2.24.4 'Nayuki'",
+    "date": "2025-5-16T00:00:00Z"
   };
 
   var meta = {
-   "name": "Altchan XT",
-   "path": "Altchan-XT",
+   "name": "Allchan-XT+",
+   "path": "Allchan-XT+",
    "fork": "figamin",
-   "page": "https://github.com/figamin/Altchan-xt",
-   "downloads": "https://github.com/figamin/Altchan-xt/releases",
+   "page": "https://github.com/figamin/Allchan-XT+",
+   "downloads": "https://github.com/figamin/Allchan-XT+/releases",
    "oldVersions": "https://raw.githubusercontent.com/ccd0/4chan-x/",
-   "faq": "https://github.com/figamin/Altchan-xt/wiki/Frequently-Asked-Questions",
+   "faq": "https://github.com/figamin/Allchan-XT+/wiki/Frequently-Asked-Questions",
    "upstreamFaq": "https://github.com/ccd0/4chan-x/wiki/Frequently-Asked-Questions",
    "captchaFAQ": "https://github.com/ccd0/4chan-x/wiki/Captcha-FAQ",
    "cssGuide": "https://github.com/ccd0/4chan-x/wiki/Styling-Guide",
-   "license": "https://github.com/figamin/Altchan-xt/blob/project-XT/LICENSE",
-   "changelog": "https://github.com/figamin/Altchan-xt/blob/project-XT/CHANGELOG.md",
-   "issues": "https://github.com/figamin/Altchan-xt/issues",
-   "newIssue": "https://github.com/figamin/Altchan-xt/issues",
+   "license": "https://github.com/figamin/Allchan-XT+/blob/project-XT/LICENSE",
+   "changelog": "https://github.com/figamin/Allchan-XT+/blob/project-XT/CHANGELOG.md",
+   "issues": "https://github.com/figamin/Allchan-XT+/issues",
+   "newIssue": "https://github.com/figamin/Allchan-XT+/issues",
    "newIssueMaxLength": 8181,
    "alternatives": "https://www.4chan-x.net/4chan_alternatives.html",
    "appid": "lacclbnghgdicfifcamcmcnilckjamag",
@@ -5268,7 +5268,7 @@ input#qr-filename {
 }
 #qr:not(.has-spoiler) #qr-spoiler-label,
 #file-n-submit:not(.has-file) :is(#qr-spoiler-label, #qr-randomize, #qr-restore-name),
-#file-n-submit:not(.has-image) #qr-jpg,
+#file-n-submit:not(.has-image) :is(#qr-jpg, #qr-randomize-md5),
 #file-n-submit:not(.has-image):not(.has-video) #qr-view,
 #file-n-submit.has-file :is(#paste-area, #url-button),
 #file-n-submit:not(.custom-cooldown) #custom-cooldown-button {
@@ -6342,6 +6342,9 @@ svg.icon {
   const ArrowDownLongSvg = 'M169.4 502.6c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 402.7 224 32c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 370.7L86.6 329.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128z';
   const ArrowDownLongW = 384, ArrowDownLongH = 512;
 
+  const DiceSvg = 'M274.9 34.3c-28.1-28.1-73.7-28.1-101.8 0L34.3 173.1c-28.1 28.1-28.1 73.7 0 101.8L173.1 413.7c28.1 28.1 73.7 28.1 101.8 0L413.7 274.9c28.1-28.1 28.1-73.7 0-101.8L274.9 34.3zM200 224a24 24 0 1 1 48 0 24 24 0 1 1 -48 0zM96 200a24 24 0 1 1 0 48 24 24 0 1 1 0-48zM224 376a24 24 0 1 1 0-48 24 24 0 1 1 0 48zM352 200a24 24 0 1 1 0 48 24 24 0 1 1 0-48zM224 120a24 24 0 1 1 0-48 24 24 0 1 1 0 48zm96 328c0 35.3 28.7 64 64 64H576c35.3 0 64-28.7 64-64V256c0-35.3-28.7-64-64-64H461.7c11.6 36 3.1 77-25.4 105.5L320 413.8V448zM480 328a24 24 0 1 1 0 48 24 24 0 1 1 0-48z';
+  const DiceW = 640, DiceH = 512;
+
   const toSvg = (svgPathData, width, height) => {
     return `<svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 ${width} ${height}">` +
       `<path d="${svgPathData}" fill="currentColor" /></svg>`;
@@ -6376,7 +6379,8 @@ svg.icon {
     play: toSvg(PlaySvg, PlayW, PlayH),
     stop: toSvg(StopSvg, StopW, StopH),
     arrowUpLong: toSvg(ArrowUpLongSvg, ArrowUpLongW, ArrowUpLongH),
-    arrowDownLong: toSvg(ArrowDownLongSvg, ArrowDownLongW, ArrowDownLongH)
+    arrowDownLong: toSvg(ArrowDownLongSvg, ArrowDownLongW, ArrowDownLongH),
+    dice: toSvg(DiceSvg, DiceW, DiceH)
   };
   var Icon = {
     /** Sets an icon in an HTML element */
@@ -6451,6 +6455,7 @@ svg.icon {
         <a href="javascript:;" id="qr-jpg" class="qr-action-button" title="Compress to jpg">C</a>
         <a href="javascript:;" id="qr-view" class="qr-action-button" title="Preview">V</a>
         <a href="javascript:;" id="qr-randomize" class="qr-action-button" title="Randomize filename">R</a>
+        <a href="javascript:;" id="qr-randomize-md5" class="qr-action-button" title="Randomize MD5">M</a>
         <a href="javascript:;" id="qr-restore-name" class="qr-action-button" title="Reset filename">U</a>
         <a href="javascript:;" id="qr-filerm" class="qr-action-button" title="Remove file">✕</a>
         <a href="javascript:;" id="url-button" class="qr-action-button" title="Post from URL">🔗︎</a>
@@ -17791,6 +17796,7 @@ aero|asia|biz|cat|com|coop|dance|info|int|jobs|mobi|moe|museum|name|net|org|post
       setNode('drawButton', '#qr-draw-button');
       setNode('randomizeButton', '#qr-randomize');
       setNode('compress', '#qr-jpg');
+      setNode('randomizeMD5', '#qr-randomize-md5');
       setNode('view', '#qr-view');
       setNode('restoreNameButton', '#qr-restore-name');
       setNode('fileSubmit', '#file-n-submit');
@@ -17836,6 +17842,17 @@ aero|asia|biz|cat|com|coop|dance|info|int|jobs|mobi|moe|museum|name|net|org|post
       $.on(nodes.fileButton, 'click', QR.openFileInput);
       $.on(nodes.noFile, 'click', QR.openFileInput);
       $.on(nodes.randomizeButton, 'click', () => { QR.selected.randomizeName(); });
+      $.on(nodes.randomizeMD5, 'click', async () => {
+        const file = QR.selected?.file;
+        if (!file) {
+          QR.error('No file selected to randomize.');
+          return;
+        }
+        const modifiedFile = await QR.randomizeMD5(file);
+        if (modifiedFile) {
+          QR.handleFiles([modifiedFile]);
+        }
+      });
       $.on(nodes.compress, 'click', async () => { QR.handleFiles([await QR.convert(QR.selected.file)]); });
       $.on(nodes.view, 'click', QR.preview);
       $.on(nodes.restoreNameButton, 'click', () => { QR.selected.restoreName(); });
@@ -17899,6 +17916,7 @@ aero|asia|biz|cat|com|coop|dance|info|int|jobs|mobi|moe|museum|name|net|org|post
       Icon.set(nodes.randomizeButton, 'shuffle');
       Icon.set(nodes.compress, 'shrink');
       Icon.set(nodes.view, 'eye');
+      Icon.set(nodes.randomizeMD5, 'dice');
       Icon.set(nodes.restoreNameButton, 'undo');
       Icon.set(nodes.splitPost, 'scissors');
       Icon.set(nodes.fileRM, 'xmark');
@@ -18291,6 +18309,61 @@ aero|asia|biz|cat|com|coop|dance|info|int|jobs|mobi|moe|museum|name|net|org|post
         return file;
       }
       return newFile;
+    },
+    async randomizeMD5() {
+      if (!QR.selected) {
+        QR.error('No post selected.');
+        return;
+      }
+      const file = QR.selected.file;
+      if (!file) {
+        QR.error('No file selected.');
+        return;
+      }
+      // Only static images (no GIF)
+      if (!file.type.startsWith('image/') || file.type === 'image/gif') {
+        new Notice('warning', 'MD5 change supports only static image files.');
+        return;
+      }
+      try {
+        const newFile = await new Promise((resolve, reject) => {
+          const img = new Image();
+          img.onload = () => {
+            const canvas = document.createElement('canvas');
+            canvas.width = img.width;
+            canvas.height = img.height;
+            const ctx = canvas.getContext('2d');
+            if (!ctx) {
+              reject(new Error('Image MD5 canvas failed'));
+              return;
+            }
+            ctx.drawImage(img, 0, 0);
+            // Flip one bit of each of the red, green, and blue channels
+            const pixel = ctx.getImageData(0, 0, 1, 1);
+            pixel.data[0] ^= 1; // red
+            pixel.data[1] ^= 1; // green
+            pixel.data[2] ^= 1; // blue
+            ctx.putImageData(pixel, 0, 0);
+            canvas.toBlob(blob => {
+              if (!blob) {
+                reject(new Error('Canvas toBlob failed'));
+                return;
+              }
+              URL.revokeObjectURL(img.src);
+              resolve(new File([blob], file.name, { type: file.type }));
+            }, file.type, 0.98);
+          };
+          img.onerror = () => {
+            URL.revokeObjectURL(img.src);
+            reject(new Error('Failed to load image'));
+          };
+          img.src = URL.createObjectURL(file);
+        });
+        // Replace the selected file with the modified one
+        QR.handleFiles([newFile]);
+      } catch (err) {
+        QR.error('Failed to randomize MD5: ' + (err instanceof Error ? err.message : err));
+      }
     },
     previewUrl: undefined,
     preview() {
@@ -19009,7 +19082,7 @@ aero|asia|biz|cat|com|coop|dance|info|int|jobs|mobi|moe|museum|name|net|org|post
     * @returns A promise with the old file if it was valid, or a new file if it wasn't.
     */
     async validateFile(file) {
-      // Do not check on altchans, those might support types 4chan doesn't
+      // Do not check on Allchans, those might support types 4chan doesn't
       if (location.hostname.endsWith('4chan.org') && !QR.mimeTypes.includes(file.type)) {
         if (file.type.startsWith('image/')) {
           const msg = `The ${file.type.slice(6)} image was converted to png.`;
@@ -20039,7 +20112,7 @@ aero|asia|biz|cat|com|coop|dance|info|int|jobs|mobi|moe|museum|name|net|org|post
         isArchived: '.archivedIcon'
       },
       file: {
-        text: '.file > :first-child',
+        text: '.file > .fileText',
         link: '.fileText > a',
         thumb: 'a.fileThumb > [data-md5]'
       },
@@ -23510,7 +23583,7 @@ Enable it on boards.${location.hostname.split('.')[1]}.org in your browser's pri
           return '';
         }
       }
-      if (archive.name.endsWith('arch.b4k.co') || archive.name.endsWith('palanq.win')) {
+      if (archive.domain.endsWith('arch.b4k.dev') || archive.domain.endsWith('archive.palanq.win') || archive.domain.endsWith('desuarchive.org')) {
         const [timeStamp, ext] = filename.split('.');
         if (timeStamp.length > 13) {
           // remove last 3 digits

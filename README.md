@@ -1,10 +1,10 @@
-# Altchan XT
+# Allchan-XT+ - For all imageboards.
 
-Altchan XT is a script that adds various features to anonymous imageboards, focused on improving compatibility with vichan and other engines.
+## Repo was renamed for renewed 4chan focused work
 
-Altchan XT was originally a simple fork of [4chan XT](https://github.com/TuxedoTako/4chan-xt) that added more valid sites. Now that 4chan XT is no longer being updated, I figured making a proper repository for this.
+Allchan-XT+ is a script that adds various features to anonymous imageboards, focused on improving the posting experience. 
 
-Note that all future development will be targeted towards imageboards other than 4chan. If you have a pull request that fixes future 4chan issues it can be merged but I will not be focusing on that.
+Allchan-XT+ was originally a simple fork of [4chan XT](https://github.com/TuxedoTako/4chan-xt) that added more valid sites. Now that 4chan XT is no longer being updated, I figured making a proper repository for this. This will be regularly updated to fix issues caused by 4chan changes.
 
 <details>
 <summary>Old 4chan XT readme</summary>
