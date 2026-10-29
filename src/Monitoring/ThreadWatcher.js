@@ -496,7 +496,7 @@ var ThreadWatcher = {
           ThreadWatcher.update(siteID, boardID, threadID, {page, lastPage});
         }
         if (ThreadWatcher.unreadEnabled && Conf['Show Unread Count']) {
-          if ((modified !== data.modified) || ((replies != null) && (replies !== data.replies))) {
+          if ((modified !== data.modified) || ((replies != null) && (replies !== data.replies)) || (data.excerpt == null)) {
             (thread.newData || (thread.newData = {})).modified = modified;
             ThreadWatcher.fetchStatus(thread);
           }
@@ -528,6 +528,11 @@ var ThreadWatcher = {
       if (isDead && Conf['Auto Prune']) {
         ThreadWatcher.rm(siteID, boardID, threadID);
         return;
+      }
+
+      if ((data.excerpt == null) && this.response.posts[0]) {
+        const excerpt = ThreadWatcher.excerptFromJSON(boardID, this.response.posts[0]);
+        if (excerpt) { ThreadWatcher.update(siteID, boardID, threadID, {excerpt}); }
       }
 
       if ((last === data.last) && (isDead === data.isDead) && (isArchived === data.isArchived)) { return; }
@@ -608,7 +613,20 @@ var ThreadWatcher = {
     }
     return all;
   },
-
+  excerptFromJSON(boardID, post) {
+    if (!post) { return ''; }
+    let text = ($.unescape(post.sub) || '').trim();
+    if (!text && post.com) {
+      const Build = g.SITE.Build;
+      const parse = Build.parseCommentDisplay || Build.parseComment;
+      text = parse ? parse.call(Build, post.com) : $.unescape(post.com);
+      text = String(text || '').replace(/\s*\n+\s*/g, ' // ').replace(/\s+/g, ' ').trim();
+    }
+    if (!text && post.filename) { text = `${$.unescape(post.filename)}${post.ext || ''}`; }
+    if (!text) { text = `No.${post.no}`; }
+    const excerpt = `/${decodeURIComponent(boardID)}/ - ${text}`;
+    return excerpt.length > 73 ? `${excerpt.slice(0, 70)}...` : excerpt;
+  },
   makeLine(siteID, boardID, threadID, data) {
     let page;
     const x = $.el('a', {
@@ -818,7 +836,7 @@ var ThreadWatcher = {
     const thread = {siteID: g.SITE.ID, boardID, threadID, data, force: true};
     if (Conf['Show Page'] && !data.isDead) {
       return ThreadWatcher.fetchBoard([thread]);
-    } else if (ThreadWatcher.unreadEnabled && Conf['Show Unread Count']) {
+    } else if ((ThreadWatcher.unreadEnabled && Conf['Show Unread Count']) || (data.excerpt == null)) {
       return ThreadWatcher.fetchStatus(thread);
     }
   },

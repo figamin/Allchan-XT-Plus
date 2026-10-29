@@ -85,7 +85,7 @@
   'use strict';
 
   var version = {
-    "version": "2.24.5 'Nayuki'",
+    "version": "2.24.6 'Nayuki'",
     "date": "2025-5-16T00:00:00Z"
   };
 
