@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Allchan-XT+
-// @version      2.24.4 'Nayuki'
+// @version      2.24.5 'Nayuki'
 // @minGMVer     1.14
 // @minFFVer     78
 // @namespace    Allchan-XT+

@@ -61,6 +61,21 @@ var ThreadWatcher = {
     $.on(sc, 'click', this.toggleWatcher);
     $.on(this.refreshButton, 'click', this.buttonFetchAll);
     $.on(this.closeButton, 'click', this.toggleWatcher);
+        $.on(d, 'xt-watch-thread xt-unwatch-thread', e => {
+      if (typeof e.detail !== 'string') { return; }
+      const i = e.detail.lastIndexOf('.');
+      if (i < 1) { return; }
+      const boardID = e.detail.slice(0, i);
+      const threadID = +e.detail.slice(i + 1);
+      if (!threadID) { return; }
+      if (e.type === 'xt-watch-thread') {
+        if (!ThreadWatcher.isWatchedRaw(boardID, threadID)) {
+          ThreadWatcher.addRaw(boardID, threadID, {}, undefined, true);
+        }
+      } else if (ThreadWatcher.isWatchedRaw(boardID, threadID)) {
+        ThreadWatcher.rm(g.SITE.ID, boardID, threadID, undefined, true);
+      }
+    });
 
     this.menu.addHeaderMenuEntry();
     $.onExists(doc, 'body', this.addDialog);

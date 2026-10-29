@@ -1,4 +1,4 @@
-### 2.24.4 "Nayuki" (2026-5-16)
+### 2.24.5 "Nayuki" (2026-5-16)
 
 - Added static image MD5 randomization
 - Fixed video title issue when using Yotsuba
